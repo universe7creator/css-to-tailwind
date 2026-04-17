@@ -1,11 +1,12 @@
 {
   "version": 2,
   "name": "css-to-tailwind",
-  "functions": {
-    "api/*.js": {
-      "runtime": "nodejs18.x"
+  "builds": [
+    {
+      "src": "api/*.js",
+      "use": "@vercel/node"
     }
-  },
+  ],
   "routes": [
     {
       "src": "/api/health",
@@ -18,9 +19,6 @@
     {
       "src": "/api/webhook",
       "dest": "/api/webhook.js"
-    },
-    {
-      "handle": "filesystem"
     },
     {
       "src": "/(.*)",
