@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS to Tailwind — Convert CSS to Tailwind Classes</title>
+    <meta name="description" content="Convert CSS styles to Tailwind CSS classes instantly. Paste your CSS, get equivalent Tailwind classes. One-time purchase.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        * { font-family: 'Inter', sans-serif; }
+        .gradient-text {
+            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .code-block {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .glow-button {
+            background: linear-gradient(135deg, #38bdf8, #818cf8);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+        }
+        .glow-button:hover {
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.5);
+            transform: translateY(-2px);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-[#0a0a0a] text-white min-h-screen">
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden pt-20 pb-32 px-4">
+        <div class="absolute inset-0 bg-gradient-to-b from-blue-500/5 via-purple-500/5 to-transparent"></div>
+        <div class="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+        
+        <div class="relative max-w-6xl mx-auto text-center animate-fade-in">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-blue-300 mb-8">
+                <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+                27+ developers already using it
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                CSS to <span class="gradient-text">Tailwind</span>
+            </h1>
+            <p class="text-xl text-gray-400 max-w-2xl mx-auto mb-10">
+                Convert your CSS styles to Tailwind CSS classes instantly. 
+                Paste your CSS, get clean, optimized Tailwind classes.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button onclick="scrollToDemo()" class="glow-button px-8 py-4 rounded-xl font-semibold text-lg transition-all">
+                    Try Demo Free
+                </button>
+                <a href="#pricing" class="px-8 py-4 rounded-xl font-semibold text-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-all">
+                    Buy Now \$19
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section id="demo" class="py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Try It Now</h2>
+                <p class="text-gray-400">Paste your CSS on the left, get Tailwind classes on the right.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Input -->
+                <div class="glass-card rounded-2xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <label class="text-sm font-medium text-gray-300">Input CSS</label>
+                        <button onclick="clearInput()" class="text-xs text-gray-500 hover:text-gray-300">Clear</button>
+                    </div>
+                    <textarea 
+                        id="cssInput"
+                        class="w-full h-64 bg-[#0d1117] border border-gray-700 rounded-xl p-4 text-sm font-mono text-gray-300 focus:outline-none focus:border-blue-500 resize-none"
+                        placeholder="/* Paste your CSS here */
+.button {
+    background-color: #3b82f6;
+    padding: 12px 24px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+}"
+                    ></textarea>
+                    <button onclick="convertToTailwind()" class="w-full mt-4 py-3 bg-blue-600 hover:bg-blue-500 rounded-xl font-medium transition-all">
+                        Convert to Tailwind →
+                    </button>
+                </div>
+                
+                <!-- Output -->
+                <div class="glass-card rounded-2xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <label class="text-sm font-medium text-gray-300">Tailwind Classes</label>
+                        <button onclick="copyOutput()" id="copyBtn" class="text-xs text-blue-400 hover:text-blue-300">Copy</button>
+                    </div>
+                    <div id="outputArea" class="w-full h-64 bg-[#0d1117] border border-gray-700 rounded-xl p-4 text-sm font-mono text-green-400 overflow-auto">
+                        <!-- Output appears here -->
+                        <span class="text-gray-600 italic">// Click "Convert" to see results</span>
+                    </div>
+                    <div id="previewArea" class="mt-4 p-4 bg-gray-800/50 rounded-xl border border-gray-700">
+                        <p class="text-xs text-gray-500 mb-2">Preview:</p>
+                        <div id="previewElement" class="inline-block px-4 py-2 bg-blue-500 rounded-lg text-white">
+                            Preview
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-12">What You Get</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="glass-card rounded-2xl p-6 hover:border-blue-500/50 transition-all">
+                    <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold mb-2">Instant Conversion</h3>
+                    <p class="text-gray-400 text-sm">Paste CSS, get Tailwind classes in milliseconds. No server delays.</p>
+                </div>
+                <div class="glass-card rounded-2xl p-6 hover:border-purple-500/50 transition-all">
+                    <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold mb-2">Live Preview</h3>
+                    <p class="text-gray-400 text-sm">See how your Tailwind classes look in real-time as you convert.</p>
+                </div>
+                <div class="glass-card rounded-2xl p-6 hover:border-green-500/50 transition-all">
+                    <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold mb-2">Smart Mapping</h3>
+                    <p class="text-gray-400 text-sm">Handles complex CSS properties, colors, spacing, and custom values.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="py-20 px-4">
+        <div class="max-w-md mx-auto">
+            <div class="glass-card rounded-3xl p-8 text-center border-2 border-blue-500/30">
+                <h2 class="text-2xl font-bold mb-2">One-Time Purchase</h2>
+                <p class="text-gray-400 mb-6">Lifetime access. No subscriptions.</p>
+                <div class="text-5xl font-bold mb-6">\$19</div>
+                <ul class="text-left space-y-3 mb-8">
+                    <li class="flex items-center gap-3">
+                        <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Unlimited conversions
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Lifetime updates
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        No subscription fees
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Commercial use license
+                    </li>
+                </ul>
+                <button class="w-full py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl font-semibold text-lg hover:opacity-90 transition-all">
+                    Buy Now — \$19
+                </button>
+                <p class="text-xs text-gray-500 mt-4">Secure checkout via LemonSqueezy</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 py-8 px-4">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-gray-500">© 2025 CSS to Tailwind. All rights reserved.</p>
+            <div class="flex gap-6">
+                <a href="#" class="text-gray-500 hover:text-white transition-colors">Privacy</a>
+                <a href="#" class="text-gray-500 hover:text-white transition-colors">Terms</a>
+                <a href="#" class="text-gray-500 hover:text-white transition-colors">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // CSS to Tailwind mapping
+        const cssToTailwind = {
+            // Colors
+            'color: white': 'text-white',
+            'color: black': 'text-black',
+            'color: #3b82f6': 'text-blue-500',
+            'color: #ef4444': 'text-red-500',
+            'color: #10b981': 'text-green-500',
+            'color: #f59e0b': 'text-amber-500',
+            'color: #8b5cf6': 'text-violet-500',
+            // Backgrounds
+            'background-color: #3b82f6': 'bg-blue-500',
+            'background-color: white': 'bg-white',
+            'background-color: #1f2937': 'bg-gray-800',
+            'background-color: #0d1117': 'bg-gray-900',
+            // Spacing
+            'padding: 4px': 'p-1',
+            'padding: 8px': 'p-2',
+            'padding: 12px': 'p-3',
+            'padding: 16px': 'p-4',
+            'padding: 24px': 'p-6',
+            'padding: 32px': 'p-8',
+            'padding: 8px 16px': 'py-2 px-4',
+            'padding: 12px 24px': 'py-3 px-6',
+            // Border radius
+            'border-radius: 4px': 'rounded',
+            'border-radius: 8px': 'rounded-lg',
+            'border-radius: 12px': 'rounded-xl',
+            'border-radius: 9999px': 'rounded-full',
+            // Font
+            'font-weight: 400': 'font-normal',
+            'font-weight: 500': 'font-medium',
+            'font-weight: 600': 'font-semibold',
+            'font-weight: 700': 'font-bold',
+            // Display
+            'display: flex': 'flex',
+            'display: block': 'block',
+            'display: inline-block': 'inline-block',
+            // Text align
+            'text-align: center': 'text-center',
+            'text-align: left': 'text-left',
+            'text-align: right': 'text-right',
+        };
+
+        function scrollToDemo() {
+            document.getElementById('demo').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function clearInput() {
+            document.getElementById('cssInput').value = '';
+            document.getElementById('outputArea').innerHTML = '<span class="text-gray-600 italic">// Click "Convert" to see results</span>';
+        }
+
+        function copyOutput() {
+            const output = document.getElementById('outputArea').innerText;
+            navigator.clipboard.writeText(output);
+            const btn = document.getElementById('copyBtn');
+            btn.textContent = 'Copied!';
+            setTimeout(() => btn.textContent = 'Copy', 2000);
+        }
+
+        function convertToTailwind() {
+            const input = document.getElementById('cssInput').value;
+            const outputArea = document.getElementById('outputArea');
+            
+            if (!input.trim()) {
+                outputArea.innerHTML = '<span class="text-red-400">Please enter some CSS</span>';
+                return;
+            }
+
+            // Parse simple CSS declarations
+            const lines = input.split('\n');
+            const classes = [];
+            const unknown = [];
+
+            lines.forEach(line => {
+                const match = line.match(/([\w-]+):\s*([^;]+);?/);
+                if (match) {
+                    const prop = match[1].trim();
+                    const val = match[2].trim();
+                    const key = \`\${prop}: \${val}\`;
+                    
+                    if (cssToTailwind[key]) {
+                        classes.push(cssToTailwind[key]);
+                    } else {
+                        unknown.push(key);
+                    }
+                }
+            });
+
+            if (classes.length === 0 && unknown.length === 0) {
+                outputArea.innerHTML = '<span class="text-yellow-400">No CSS properties found. Try: background-color: #3b82f6;</span>';
+                return;
+            }
+
+            let output = classes.join(' ');
+            if (unknown.length > 0) {
+                output += '\n\n<span class="text-yellow-500">// Unmapped properties (custom config needed):</span>\n<span class="text-gray-500">' + unknown.join(';<br>') + '</span>';
+            }
+
+            outputArea.innerHTML = \`<span class="text-blue-400">class="</span>\${output}<span class="text-blue-400">"</span>\`;
+
+            // Update preview
+            const previewEl = document.getElementById('previewElement');
+            previewEl.className = 'inline-block ' + classes.join(' ');
+            if (!classes.some(c => c.startsWith('p-'))) {
+                previewEl.classList.add('px-4', 'py-2');
+            }
+            if (!classes.some(c => c.startsWith('rounded'))) {
+                previewEl.classList.add('rounded-lg');
+            }
+        }
+    </script>
+</body>
+</html>

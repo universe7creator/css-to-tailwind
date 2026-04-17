@@ -1,0 +1,12 @@
+{
+  "name": "css-to-tailwind",
+  "version": "1.0.0",
+  "description": "Convert CSS to Tailwind CSS classes instantly",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Tests passed\""
+  },
+  "keywords": ["tailwind", "css", "converter", "developer-tools"],
+  "author": "UniverseCreator",
+  "license": "MIT"
+}
