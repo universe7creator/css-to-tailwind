@@ -3,9 +3,13 @@
   "slug": "css-to-tailwind",
   "description": "Convert CSS styles to Tailwind CSS classes instantly. Paste your CSS, get equivalent Tailwind classes.",
   "price": "$19",
-  "status": "building",
+  "status": "live",
   "created_at": "2026-04-17",
-  "tech_stack": ["vanilla-js", "vercel", "tailwind-parser"],
+  "tech_stack": [
+    "vanilla-js",
+    "vercel",
+    "tailwind-parser"
+  ],
   "category": "developer-tools",
   "features": [
     "CSS to Tailwind class conversion",
@@ -13,5 +17,10 @@
     "Copy-paste ready output",
     "Property-by-property mapping",
     "Unknown CSS detection"
-  ]
+  ],
+  "vercel_url": "https://css-to-tailwind.vercel.app",
+  "webhook_url": "https://css-to-tailwind.vercel.app/api/webhook",
+  "checkout_url": null,
+  "lemon_checkout_url": null,
+  "lemonsqueezy_checkout_url": null
 }
