@@ -21,6 +21,9 @@
       "dest": "/api/webhook.js"
     },
     {
+      "handle": "filesystem"
+    },
+    {
       "src": "/(.*)",
       "dest": "/index.html"
     }

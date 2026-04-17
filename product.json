@@ -18,8 +18,8 @@
     "Property-by-property mapping",
     "Unknown CSS detection"
   ],
-  "vercel_url": "https://css-to-tailwind.vercel.app",
-  "webhook_url": "https://css-to-tailwind.vercel.app/api/webhook",
+  "vercel_url": "https://css-to-tailwind-kappa.vercel.app",
+  "webhook_url": "https://css-to-tailwind-kappa.vercel.app/api/webhook",
   "checkout_url": null,
   "lemon_checkout_url": null,
   "lemonsqueezy_checkout_url": null
