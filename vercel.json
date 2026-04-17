@@ -1,6 +1,7 @@
 {
   "version": 2,
   "name": "css-to-tailwind",
+  "passwordProtection": false,
   "builds": [
     {
       "src": "api/*.js",
