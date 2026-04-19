@@ -18,9 +18,9 @@
     "Property-by-property mapping",
     "Unknown CSS detection"
   ],
-  "vercel_url": "https://css-to-tailwind-kappa.vercel.app",
-  "webhook_url": "https://css-to-tailwind-kappa.vercel.app/api/webhook",
-  "checkout_url": null,
+  "vercel_url": "https://css-to-tailwind.vercel.app",
+  "webhook_url": "https://css-to-tailwind.vercel.app/api/webhook",
+  "checkout_url": "https://profitbridge.lemonsqueezy.com/checkout/buy/placeholder-css-to-tailwind",
   "lemon_checkout_url": null,
-  "lemonsqueezy_checkout_url": null
+  "lemonsqueezy_checkout_url": "https://profitbridge.lemonsqueezy.com/checkout/buy/placeholder-css-to-tailwind"
 }
