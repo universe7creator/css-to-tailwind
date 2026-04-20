@@ -38,4 +38,6 @@ Convert raw CSS into Tailwind classes before your utility-first migration turns 
 
 ## Pricing
 
+**Checkout Status:** Checkout link isn't live yet. The public demo works now; LemonSqueezy activation is still pending.
+
 $19 planned one-time purchase. Public demo is already live for evaluation.
