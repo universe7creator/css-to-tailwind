@@ -1,6 +1,7 @@
 {
   "version": 2,
   "name": "css-to-tailwind",
+  "public": true,
   "builds": [
     {
       "src": "api/*.js",
